@@ -1,0 +1,71 @@
+
+input, select, textarea{
+
+  height: 55.53px;
+  top: 526.39px;
+  left: 409px;
+  border-radius: 8px;
+  border: 1px;
+  align-items: center;
+  background: #FAFAFC;
+
+  border: 1px solid #E6E6F0;
+
+}
+
+
+
+.infosUser{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 31.73px;
+  gap: 15.87px;
+}
+
+.nome{
+  width: 100%;
+  display: flex;
+  gap: 22px;
+  box-sizing:border-box ;
+  justify-content: center;
+}
+
+.campoInput{
+
+  display: flex;
+  flex-direction: column;
+  gap: 7.93px;
+  flex-grow: 1;
+}
+
+.end{
+  display: flex;
+  flex-direction:row;
+  gap: 22px;
+
+}
+
+form h1{
+  padding-bottom: 7.93px;
+  border-bottom: 1px solid #E6E6F0;
+  margin-bottom: 31.73px;
+}
+
+.inputSelect{
+  width: 18.75rem;
+}
+
+
+.botoes{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 22px;
+  justify-content: center;
+  margin-top: 31.73px;
+
+  btn-primary{
+    width: 100%;
+  }
+}
+

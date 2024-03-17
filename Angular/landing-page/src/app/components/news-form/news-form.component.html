@@ -1,0 +1,78 @@
+
+
+  <form [formGroup]="newsletterForm">
+
+    <div class="infosUser">
+
+      <div class="nome">
+          <div class="campoInput">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" formControlName="nome">
+          </div>
+
+          <div class="campoInput">
+              <label for="cpf">CPF</label>
+              <input type="cpf" id="cpf" formControlName="cpf">
+          </div>
+
+      </div>
+
+      <div class="campoInput">
+        <label for="event-data">Data</label>
+        <input type="date" id="event-date" name="event-date" formControlName="data" >
+      </div>
+
+      <div class="end">
+        <div class="campoInput ">
+          <label for = 'Peso'>Peso</label>
+          <input type="number" id="event-date" name="event-date"  formControlName="peso">
+        </div>
+        <div class="campoInput ">
+          <label for = 'altura'>Altura</label>
+          <input type="number" id="event-date" name="event-date" formControlName="altura" >
+        </div>
+      </div>
+
+
+
+      <div class="campoInput">
+        <label for = 'sexo'>sexo</label>
+            <select class="inputSelect"  id="sexo" formControlName="sexo">
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+        </select>
+      </div>
+
+
+
+
+    </div>
+
+    <!-- <label for ="name">Name</label>
+    <input id = "name" formControlName="name"/>
+    <label for="email" >Email</label>
+    <input id="email" formControlName="email"/> -->
+    <btn-primary
+    btn-text="Incluir"
+    variant="primary"
+    (submit)="onSubmit()"
+    [disabled]="!newsletterForm.valid"
+    [loading]="loading()"
+    ></btn-primary>
+
+    <div class="botoes">
+      <btn-primary btn-text="Alterar" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+      <btn-primary btn-text="Excluir" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+      <btn-primary btn-text="Pesquisar" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+
+
+    </div>
+
+  </form>
+
