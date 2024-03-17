@@ -2,6 +2,30 @@
 
   <form [formGroup]="newsletterForm">
 
+
+    <div class="botoes">
+      <btn-primary
+      btn-text="Incluir"
+      variant="primary"
+      (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid"
+      [loading]="loading()"
+      ></btn-primary>
+
+      <btn-primary btn-text="Alterar" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+      <btn-primary btn-text="Excluir" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+      <btn-primary btn-text="Pesquisar" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+
+
+    </div>
+
+
     <div class="infosUser">
 
       <div class="nome">
@@ -38,8 +62,8 @@
       <div class="campoInput">
         <label for = 'sexo'>sexo</label>
             <select class="inputSelect"  id="sexo" formControlName="sexo">
-                <option value="Masculino">Masculino</option>
-                <option value="Feminino">Feminino</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
         </select>
       </div>
 
@@ -52,27 +76,7 @@
     <input id = "name" formControlName="name"/>
     <label for="email" >Email</label>
     <input id="email" formControlName="email"/> -->
-    <btn-primary
-    btn-text="Incluir"
-    variant="primary"
-    (submit)="onSubmit()"
-    [disabled]="!newsletterForm.valid"
-    [loading]="loading()"
-    ></btn-primary>
 
-    <div class="botoes">
-      <btn-primary btn-text="Alterar" variant="primary" (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid" [loading]="loading()"
-    />
-      <btn-primary btn-text="Excluir" variant="primary" (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid" [loading]="loading()"
-    />
-      <btn-primary btn-text="Pesquisar" variant="primary" (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid" [loading]="loading()"
-    />
-
-
-    </div>
 
   </form>
 

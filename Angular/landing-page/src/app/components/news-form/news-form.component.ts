@@ -18,7 +18,7 @@ import { error } from 'console';
 })
 export class NewsFormComponent {
 
-  newsletterForm:FormGroup;
+  newsletterForm: FormGroup;
   loading = signal(false);
 
   constructor(private service:NewsletterService) {
@@ -39,7 +39,7 @@ export class NewsFormComponent {
     this.loading.set(true);
     if(this.newsletterForm.valid){
       this.service.sendData(
-        this.newsletterForm.value.name,
+        this.newsletterForm.value.nome,
         this.newsletterForm.value.data,
         this.newsletterForm.value.cpf,
         this.newsletterForm.value.peso,

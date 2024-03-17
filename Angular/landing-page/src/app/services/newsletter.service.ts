@@ -10,14 +10,18 @@ import { NewsletterResponse } from '../interfaces/newsletter.interface';
 })
 export class NewsletterService {
 
-  private endpointUrl="https://faed47pcwb7biktidlecuafuty0aegep.lambda-url.us-east-1.on.aws/";
+  private endpointUrl="http://127.0.0.1:8000/pessoa/";
 
 
   constructor(private http:HttpClient) {
   }
 
-  sendData(name:string, data:string,cpf:string,peso:number,altura:number,sexo:string):Observable<NewsletterResponse>{
-    const data_response= {name,data,cpf,altura,peso,sexo}
+  sendData(nome:string, data:string,cpf:string,peso:number,altura:number,sexo:string):Observable<NewsletterResponse>{
+    const data_response= {"pNome":nome,"pData":data,"pCPF":cpf,"pAltura":altura,
+    "pPeso":peso,"pSexo":sexo}
+    console.log(data_response)
+
+
     return this.http.post<NewsletterResponse>(this.endpointUrl, data_response)
   }
 }
