@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NewsletterResponse } from '../interfaces/newsletter.interface';
+import { Pessoa } from '../interfaces/pessoa.interface';
 
 
 
@@ -14,6 +15,14 @@ export class NewsletterService {
 
 
   constructor(private http:HttpClient) {
+  }
+
+  // pessoas?nome=joao
+  searchByName(nome:string){
+   let params = new HttpParams().set('pNome', nome);
+
+  // Passar os parâmetros na solicitação GET
+  return this.http.get<Pessoa[]>(this.endpointUrl, { params: params });
   }
 
   sendData(nome:string, data:string,cpf:string,peso:number,altura:number,sexo:string):Observable<NewsletterResponse>{

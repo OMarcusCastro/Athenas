@@ -55,6 +55,18 @@ main{
   flex-direction: column;
   gap: 7.93px;
   flex-grow: 1;
+
+  input{
+    height: 55.53px;
+    top: 526.39px;
+    left: 409px;
+    border-radius: 8px;
+    border: 1px;
+    align-items: center;
+    background: #FAFAFC;
+
+    border: 1px solid #E6E6F0;
+  }
 }
 
 .end{
@@ -73,3 +85,17 @@ form h1{
   width: 18.75rem;
 }
 
+
+.botoes{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 22px;
+  justify-content: center;
+  margin: 20px auto 31.71px;
+
+
+  btn-primary{
+    width: 100%;
+  }
+}

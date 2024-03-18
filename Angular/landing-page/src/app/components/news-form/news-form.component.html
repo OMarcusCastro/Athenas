@@ -1,30 +1,6 @@
 
 
-  <form [formGroup]="newsletterForm">
-
-
-    <div class="botoes">
-      <btn-primary
-      btn-text="Incluir"
-      variant="primary"
-      (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid"
-      [loading]="loading()"
-      ></btn-primary>
-
-      <btn-primary btn-text="Alterar" variant="primary" (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid" [loading]="loading()"
-    />
-      <btn-primary btn-text="Excluir" variant="primary" (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid" [loading]="loading()"
-    />
-      <btn-primary btn-text="Pesquisar" variant="primary" (submit)="onSubmit()"
-      [disabled]="!newsletterForm.valid" [loading]="loading()"
-    />
-
-
-    </div>
-
+  <form id="formId" [formGroup]="newsletterForm">
 
     <div class="infosUser">
 

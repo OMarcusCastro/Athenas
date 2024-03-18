@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { BtnPrimaryComponent } from '../btn-primary/btn-primary.component';
 import { Form, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NewsletterService } from '../../services/newsletter.service';
@@ -18,46 +18,10 @@ import { error } from 'console';
 })
 export class NewsFormComponent {
 
-  newsletterForm: FormGroup;
-  loading = signal(false);
+  @Input("form-id") formId: string = ''
+  @Input() newsletterForm: FormGroup = new FormGroup({});
 
-  constructor(private service:NewsletterService) {
-    this.newsletterForm = new FormGroup({
-      nome: new FormControl('',[Validators.required]),
-      data: new FormControl('',[Validators.required]),
-      cpf: new FormControl('',[Validators.required]),
-      altura: new FormControl('',[Validators.required]),
-      peso: new FormControl('',[Validators.required]),
-      sexo: new FormControl('',[Validators.required]),
-
-    });
+  constructor() {
   }
 
-  onSubmit(){
-
-
-    this.loading.set(true);
-    if(this.newsletterForm.valid){
-      this.service.sendData(
-        this.newsletterForm.value.nome,
-        this.newsletterForm.value.data,
-        this.newsletterForm.value.cpf,
-        this.newsletterForm.value.peso,
-        this.newsletterForm.value.altura,
-        this.newsletterForm.value.sexo
-        ).subscribe({
-        next:() => {
-          console.log('Data sent');
-
-          this.newsletterForm.reset();
-          this.loading.set(false);
-        },
-        error:()=>{
-
-          this.loading.set(false);
-        }
-
-      })
-    }
-  }
 }

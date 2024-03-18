@@ -12,6 +12,8 @@ type BtnVariants = "primary" | "secondary"
   styleUrl: './btn-primary.component.scss'
 })
 export class BtnPrimaryComponent {
+
+  @Input("btn-id") btnId:string = '';
   @Input("btn-text") btnText:string ='';
   @Input() disabled:boolean = false;
   @Input() loading:boolean = false;

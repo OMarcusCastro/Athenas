@@ -28,7 +28,11 @@ class PessoaService:
         pessoa.delete()
         return Response(status=204)
 
-    def retrieve_pessoa(self, data, pk):
-        pessoa = Pessoa.objects.get(pk=pk)
-        serializer = PessoaSerializer(pessoa)
-        return Response(serializer.data, status=200)
+    def get_pessoa(self, data, pk=None):
+
+        if data:
+            pessoas = Pessoa.objects.filter(pNome=data)
+            serializer = PessoaSerializer(pessoas, many=True)
+            return Response(serializer.data, status=200)
+        else:
+            return Response({"detail": "Por favor, forneça um parâmetro 'pNome' no corpo da sua consulta."}, status=400)

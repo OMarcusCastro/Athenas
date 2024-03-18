@@ -1,9 +1,51 @@
 
 <app-header/>
 
-  <main id = "evento">
-  <newsletter-form></newsletter-form>
+<main id = "evento">
 
+
+  <div class="botoes">
+    <btn-primary
+      id="newsletter-form"
+      btn-text="Incluir"
+      variant="primary"
+      (submit)="onSubmit()"
+      [loading]="loading()"
+    ></btn-primary>
+
+
+      <btn-primary btn-text="Pesquisar" variant="primary" (submit)="onSearch()"
+    [loading]="loading()"
+      />
+
+    <btn-primary btn-text="Alterar" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+
+    <btn-primary btn-text="Excluir" variant="primary" (submit)="onSubmit()"
+      [disabled]="!newsletterForm.valid" [loading]="loading()"
+    />
+
+
+  </div>
+
+  <div *ngIf="operacao == 'incluir'">
+    <newsletter-form form-id="newsletter-form" [newsletterForm]="newsletterForm"></newsletter-form>
+  </div>
+
+  <div *ngIf="operacao == 'pesquisar'">
+    <div class="campoInput">
+      <input  type="text" placeholder="Digite o nome para pesquisar e pressione Enter"
+             (keyup.enter)="onSearchValue($event)">
+
+    <div *ngIf="loadingSearchByName">
+
+      <lista-pessoas [pessoas]="pessoas"></lista-pessoas>
+    </div>
+
+    </div>
+
+  </div>
 </main>
 
   <!-- <section class="main-section pad-70">

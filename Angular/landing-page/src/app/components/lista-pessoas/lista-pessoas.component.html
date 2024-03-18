@@ -1,0 +1,83 @@
+<div class="card">
+  <p-toast></p-toast>
+  <p-table [value]="pessoas" dataKey="id" editMode="row" [tableStyle]="{'min-width':'50rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:20%">Nome</th>
+        <th style="width:20%">CPF</th>
+        <th style="width:20%">Data</th>
+        <th style="width:20%">Altura</th>
+        <th style="width:20%">Peso</th>
+        <th style="width:20%">Sexo</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-pessoa let-editing="editing" let-ri="rowIndex">
+      <ng [pEditableRow]="pessoa">
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="pessoa.pNome">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{pessoa.nome}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="pessoa.pCPF">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{pessoa.cpf}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="pessoa.pData">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{pessoa.data}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="pessoa.pAltura">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{pessoa.altura}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="pessoa.pPeso">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{pessoa.peso}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="pessoa.pSexo">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{pessoa.sexo}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <button pButton type="button" pInitEditableRow ></button>
+        </td>
+      </ng>
+    </ng-template>
+  </p-table>
+</div>
