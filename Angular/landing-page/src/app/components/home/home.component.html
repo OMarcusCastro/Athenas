@@ -38,10 +38,9 @@
       <input  type="text" placeholder="Digite o nome para pesquisar e pressione Enter"
              (keyup.enter)="onSearchValue($event)">
 
-    <div *ngIf="loadingSearchByName">
-
-      <lista-pessoas [pessoas]="pessoas"></lista-pessoas>
-    </div>
+      <div *ngIf="loadingSearchByName">
+        <lista-pessoas [pessoas]="pessoas"></lista-pessoas>
+      </div>
 
     </div>
 

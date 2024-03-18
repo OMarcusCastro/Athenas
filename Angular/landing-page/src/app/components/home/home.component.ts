@@ -5,9 +5,10 @@ import { BtnPrimaryComponent } from '../btn-primary/btn-primary.component';
 import { NewsFormComponent } from '../news-form/news-form.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NewsletterService } from '../../services/newsletter.service';
-import { ListaPessoasComponent } from '../lista-pessoas/lista-pessoas.component';
+// import { ListaPessoasComponent } from '../lista-pessoas/lista-pessoas.component';
 import { Pessoa } from '../../interfaces/pessoa.interface';
 import { noop } from 'rxjs';
+import { ListaPessoasComponent } from '../lista-pessoas/lista-pessoas.component';
 
 
 
@@ -23,6 +24,7 @@ import { noop } from 'rxjs';
     CommonModule,
     ReactiveFormsModule,
     ListaPessoasComponent
+
   ],
   providers: [NewsletterService,],
   templateUrl: './home.component.html',
