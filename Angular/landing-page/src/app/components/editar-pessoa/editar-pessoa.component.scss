@@ -1,0 +1,67 @@
+.box{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem;
+
+  border-radius: 8px;
+
+  .end{
+    display: flex;
+    flex-direction:row;
+    gap: 22px;
+    margin-top: 1rem;
+
+  }
+}
+h1{
+  font-family: "Staatliches";
+  font-size: 36px;
+  line-height: 46px;
+  color: #F67669;
+  margin-bottom: 1rem;
+
+}
+
+.btn{
+  width: 100%;
+  height: 51px;
+  background: #F67669;
+  color: #FAFAFC;
+  font-family: "Staatliches";
+  font-size: 20px;
+  line-height: 26px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+
+
+
+  &:disabled{
+    opacity: 0.6;
+  }
+}
+
+.campoInput + .campoInput{
+  margin-top: 1rem;
+}
+
+.campoInput{
+
+  display: flex;
+  flex-direction: column;
+  gap: 7.93px;
+  flex-grow: 1;
+
+  input, select, textarea{
+
+    height: 40px;
+    top: 526.39px;
+    left: 409px;
+    border-radius: 8px;
+    border: 1px;
+    align-items: center;
+    background: #FAFAFC;
+
+    border: 1px solid #E6E6F0;
+}
+}

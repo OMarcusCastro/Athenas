@@ -1,24 +1,49 @@
+<table mat-table [dataSource]="pessoas" class="mat-elevation-z8">
 
-<div class="lista-pessoas">
-  <table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Idade</th>
-            <th>Endereço</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pessoa of pessoas">
-            <td>{{ pessoa.pNome }}</td>
-            <td>{{ pessoa.pData}}</td>
-            <td>{{ pessoa.pPeso}}</td>
-            <td>{{ pessoa.pCPF}}</td>
-            <td>{{ pessoa.pAltura}}</td>
-            <td>{{ pessoa.pSexo}}</td>
-        </tr>
-    </tbody>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.id }} </td>
+  </ng-container>
+  <ng-container matColumnDef="pNome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pNome }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pCPF">
+    <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pCPF }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pData">
+    <th mat-header-cell *matHeaderCellDef> Nascimento </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pData }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pSexo">
+    <th mat-header-cell *matHeaderCellDef> Sexo </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pSexo }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pPeso">
+    <th mat-header-cell *matHeaderCellDef>Peso(Kg)</th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pPeso }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pAltura">
+    <th mat-header-cell *matHeaderCellDef> Altura(m) </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pAltura }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="Columns"></tr>
+  <tr mat-row *matRowDef="let pessoa; columns: Columns;"></tr>
+
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef>editar</th>
+    <td mat-cell *matCellDef="let pessoa">
+      <button mat-icon-button (click)="openEditarPessoa(pessoa)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
 </table>
-
-</div>
