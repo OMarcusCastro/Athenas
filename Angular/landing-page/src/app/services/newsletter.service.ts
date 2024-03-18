@@ -42,4 +42,18 @@ export class NewsletterService {
     console.log(pessoa)
     return this.http.put<NewsletterResponse>(`${this.endpointUrl}${pessoa.id}/`, pessoa);
   }
+
+  deletePessoa(id:number): Observable<NewsletterResponse> {
+    return this.http.delete<NewsletterResponse>(`${this.endpointUrl}${id}/`);
+  }
+
+  calculaPesoIdeal(id:number){
+    let params = new HttpParams()
+      .set('id', id.toString()) // Converter o ID para string
+      .set('calcula_ideal', 'true'); // Definir o parâmetro calcula_ideal como 'true'
+
+    // Passar os parâmetros na solicitação GET
+    return this.http.get<{peso_ideal:string}>(this.endpointUrl, { params: params });
+  }
+
 }

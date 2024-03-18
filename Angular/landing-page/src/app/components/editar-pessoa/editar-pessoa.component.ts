@@ -1,49 +1,95 @@
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Pessoa, PessoaComId } from '../../interfaces/pessoa.interface';
 import { NewsletterService } from '../../services/newsletter.service';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'editar-pessoa',
   standalone: true,
-  imports:[],
+  imports:[ReactiveFormsModule,RouterOutlet,CommonModule],
   templateUrl: './editar-pessoa.component.html',
   styleUrls: ['./editar-pessoa.component.scss']
 })
 
 
-
 export class EditarPessoaComponent {
-  pessoa: Pessoa;
+  pessoaForm: FormGroup;
+  pesoIdeal: string | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<EditarPessoaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Pessoa,
-    private newsletterService: NewsletterService // Injete o NewsletterService no construtor
+    @Inject(MAT_DIALOG_DATA) public data: PessoaComId,
+    private router: Router,
+    private fb: FormBuilder,
+    private service : NewsletterService,
+
   ) {
-    this.pessoa = { ...data }; // Clonar os dados recebidos para evitar modificação direta
-  }
-
-  Excluir(): void {
-    // Lógica para excluir a pessoa (opcional)
-    this.dialogRef.close('excluir');
-  }
-
-  editarPessoa(): void {
-    // Lógica para editar a pessoa
-    this.newsletterService.updatePessoa(this.pessoa).subscribe({
-      next: () => {
-        console.log('Pessoa atualizada com sucesso!');
-        this.dialogRef.close(); // Feche o diálogo após a edição bem-sucedida
-      },
-      error: (error) => {
-        console.error('Erro ao atualizar pessoa:', error);
-        // Lógica para lidar com o erro (opcional)
-      }
+    this.pessoaForm = this.fb.group({
+      id: [this.data.id, Validators.required], // Inclua a inicialização para o campo id
+      pNome: [this.data.pNome, Validators.required],
+      pData: [this.data.pData, Validators.required],
+      pCPF: [this.data.pCPF, Validators.required],
+      pAltura: [this.data.pAltura, Validators.required],
+      pPeso: [this.data.pPeso, Validators.required],
+      pSexo: [this.data.pSexo, Validators.required]
     });
   }
 
+
+
+
+  Excluir(): void {
+    this.service.deletePessoa(this.data.id).subscribe({
+      next: () => {
+        console.log('Pessoa excluída com sucesso!');
+
+        this.dialogRef.close();
+      },
+      error: (error) => {
+        console.error('Erro ao excluir pessoa:', error);
+        // Adicione lógica para exibir uma mensagem de erro ao usuário
+      }
+    });
+  window.location.reload();
+  //  this.router.navigate(['/']);
+  }
+
+  editarPessoa(): void {
+    if (this.pessoaForm.valid) {
+      const pessoaAtualizada: Pessoa = this.pessoaForm.value;
+      console.log('Pessoa atualizada:', this.pessoaForm.getRawValue());
+      this.service.updatePessoa(pessoaAtualizada).subscribe({
+        next: () => {
+          console.log('Pessoa atualizada com sucesso!');
+          this.dialogRef.close();
+        },
+        error: (error) => {
+          console.error('Erro ao atualizar pessoa:', error);
+          // Adicione lógica para exibir uma mensagem de erro ao usuário
+        }
+      });
+    } else {
+      console.error('Formulário inválido. Verifique os campos.');
+      // Adicione lógica para exibir uma mensagem ao usuário informando que o formulário está inválido
+    }
+
+  }
+
   Calcular(): void {
-    // Lógica para calcular (opcional)
+    this.service.calculaPesoIdeal(this.data.id).subscribe({
+
+      next: (response) => {
+        console.log('Peso ideal calculado:', response);
+        this.pesoIdeal =response.peso_ideal;
+        // Adicione lógica para exibir o peso ideal ao usuário
+      },
+      error: (error) => {
+        console.error('Erro ao calcular peso ideal:', error);
+        // Adicione lógica para exibir uma mensagem de erro ao usuário
+      }
+    });
   }
 }

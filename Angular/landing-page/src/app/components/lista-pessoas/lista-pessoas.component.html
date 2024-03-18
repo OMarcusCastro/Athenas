@@ -17,7 +17,7 @@
 
   <ng-container matColumnDef="pData">
     <th mat-header-cell *matHeaderCellDef> Nascimento </th>
-    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pData }} </td>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.pData |date: 'dd/MM/yyyy' }} </td>
   </ng-container>
 
   <ng-container matColumnDef="pSexo">

@@ -1,5 +1,6 @@
 
 from django.db import models
+from decimal import Decimal
 
 # Create your models here.
 
@@ -19,10 +20,11 @@ class Pessoa(models.Model):
     pPeso = models.DecimalField(max_digits=6, decimal_places=2)
 
     def CalcularPesoIdeal(self):
+        altura = Decimal(str(self.pAltura))
         if self.pSexo == 'M':
-            return (72.7 * self.pAltura) - 58
+            return (Decimal('72.7') * altura) - Decimal('58')
         else:
-            return (62.1 * self.pAltura) - 44.7
+            return (Decimal('62.1') * altura) - Decimal('44.7')
 
     def __str__(self):
         return str(self.pNome)

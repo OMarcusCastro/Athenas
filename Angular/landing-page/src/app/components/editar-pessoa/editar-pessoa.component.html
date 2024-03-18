@@ -1,40 +1,45 @@
 <div class="box">
   <h1>Detalhes da pessoa</h1>
-  <form id="edit-pessoa">
+  <form id="edit-pessoa" [formGroup]="pessoaForm" >
     <div class="campoInput">
       <label for="Nome">Nome</label>
-      <input type="text" id="nome" name="nome" formControlName="nome" placeholder="{{ data.pNome }}">
+      <input type="text" id="nome" name="nome" formControlName="pNome" value="{{data.pNome}}">
     </div>
     <div class="campoInput">
       <label for="Nascimento">Nascimento</label>
-      <input  placeholder="{{ data.pData }}"
+      <input  value="{{ data.pData }}"
       class="textbox-n"
       type="text"
       onfocus="(this.type='date')"
       onblur="(this.type='text')"
-      id="date" formControlName="nascimento">
+      id="date" formControlName="pData">
+
     </div>
     <div class="campoInput">
       <label for="CPF">CPF</label>
-      <input type="text" id="cpf" name="cpf" formControlName="cpf" placeholder="{{ data.pCPF }}">
+      <input type="text" id="cpf" name="cpf" formControlName="pCPF" value="{{ data.pCPF }}">
     </div>
     <div class="campoInput">
       <label for="Altura">Altura</label>
-      <input type="number" id="altura" name="altura" formControlName="altura" placeholder="{{ data.pAltura }}">
+      <input type="number" id="altura" name="altura" formControlName="pAltura" value="{{ data.pAltura }}">
     </div>
     <div class="campoInput">
       <label for="Peso">Peso</label>
-      <input type="number" id="peso" name="peso" formControlName="peso" placeholder="{{ data.pPeso }}">
+      <input type="number" id="peso" name="peso" formControlName="pPeso" value="{{ data.pPeso }}">
     </div>
     <div class="campoInput">
       <label for="Sexo">Sexo</label>
-      <input type="text" id="sexo" name="sexo" formControlName="sexo" placeholder="{{ data.pSexo }}">
+      <input type="text" id="sexo" name="sexo" formControlName="pSexo" value="{{ data.pSexo }}">
     </div>
   </form>
 
   <div class="end">
-    <button class="btn" (click)="editarPessoa()">Editar</button>
+    <button class="btn" [disabled]="!pessoaForm.valid"  (click)="editarPessoa()">Editar</button>
     <button class="btn" (click)="Excluir()">Excluir</button>
     <button class="btn" (click)="Calcular()">Calcular</button>
+  </div>
+
+  <div class="campoInput" *ngIf="pesoIdeal">
+    <label for="PesoIdeal:">Peso ideal: {{pesoIdeal}}</label>
   </div>
 </div>

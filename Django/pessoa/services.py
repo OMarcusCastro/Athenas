@@ -36,3 +36,10 @@ class PessoaService:
             return Response(serializer.data, status=200)
         else:
             return Response({"detail": "Por favor, forneça um parâmetro 'pNome' no corpo da sua consulta."}, status=400)
+
+    def calcula_peso(self, id):
+        pessoa = Pessoa.objects.get(pk=id)
+        result = str(pessoa.CalcularPesoIdeal())
+        result = {"peso_ideal": result}
+
+        return Response(result, status=200)

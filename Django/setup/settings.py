@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from dotenv import load_dotenv  # ignore
-# import dj_database_url
+import dj_database_url
 
 load_dotenv(".env/.env")
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_filters',
+
 
     # apps
     'pessoa',
@@ -96,6 +97,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+database_url = os.environ.get('DATABASE_URL')
+
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 
 # Password validation
