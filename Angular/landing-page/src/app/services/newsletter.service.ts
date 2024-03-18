@@ -1,10 +1,14 @@
+import { Pessoa } from './../interfaces/pessoa.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NewsletterResponse } from '../interfaces/newsletter.interface';
-import { Pessoa } from '../interfaces/pessoa.interface';
 
 
+interface PessoaComId extends Pessoa {
+  id: number;
+
+}
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +36,10 @@ export class NewsletterService {
 
 
     return this.http.post<NewsletterResponse>(this.endpointUrl, data_response)
+  }
+
+  updatePessoa(pessoa:any): Observable<NewsletterResponse> {
+    console.log(pessoa)
+    return this.http.put<NewsletterResponse>(`${this.endpointUrl}${pessoa.id}/`, pessoa);
   }
 }

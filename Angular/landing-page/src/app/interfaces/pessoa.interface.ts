@@ -6,3 +6,8 @@ export interface Pessoa{
   pPeso:number;
   pSexo:string;
 }
+
+
+export interface PessoaComId extends Pessoa {
+   id: number;
+}

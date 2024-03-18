@@ -7,7 +7,12 @@
     </div>
     <div class="campoInput">
       <label for="Nascimento">Nascimento</label>
-      <input type="date" id="nascimento" name="nascimento" formControlName="nascimento" placeholder="{{ data.pData }}">
+      <input  placeholder="{{ data.pData }}"
+      class="textbox-n"
+      type="text"
+      onfocus="(this.type='date')"
+      onblur="(this.type='text')"
+      id="date" formControlName="nascimento">
     </div>
     <div class="campoInput">
       <label for="CPF">CPF</label>

@@ -6,7 +6,7 @@ import { NewsFormComponent } from '../news-form/news-form.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NewsletterService } from '../../services/newsletter.service';
 // import { ListaPessoasComponent } from '../lista-pessoas/lista-pessoas.component';
-import { Pessoa } from '../../interfaces/pessoa.interface';
+import { Pessoa, PessoaComId } from '../../interfaces/pessoa.interface';
 import { noop } from 'rxjs';
 import { ListaPessoasComponent } from '../lista-pessoas/lista-pessoas.component';
 

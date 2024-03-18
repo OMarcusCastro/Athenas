@@ -1,4 +1,5 @@
-User
+import { PessoaComId } from './../../interfaces/pessoa.interface';
+
 import { Component, Input } from '@angular/core';
 import { Pessoa } from '../../interfaces/pessoa.interface';
 import { CommonModule } from '@angular/common';
@@ -25,8 +26,8 @@ export class ListaPessoasComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  openEditarPessoa(pessoa: Pessoa): void {
-    const dialogRef = this.dialog.open(EditarPessoaComponent(), {
+  openEditarPessoa(pessoa: PessoaComId): void {
+    const dialogRef = this.dialog.open(EditarPessoaComponent, {
       width: '600px',
       data: pessoa
     });
